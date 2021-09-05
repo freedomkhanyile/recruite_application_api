@@ -18,5 +18,7 @@ namespace CourseApplications.Api.Models.Applications
         public string HighestGradePassed { get; set; }
         public DateTime ApplicationDate { get; set; }
         public string Status { get; set; }
+
+        public int CourseId { get; set; }
     }
 }

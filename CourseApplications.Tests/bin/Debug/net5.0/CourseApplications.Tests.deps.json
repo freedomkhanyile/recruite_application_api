@@ -1743,6 +1743,7 @@
       "CourseApplications.Api/1.0.0": {
         "dependencies": {
           "CourseApplications.Api.Models": "1.0.0",
+          "CourseApplications.DAL": "1.0.0",
           "Swashbuckle.AspNetCore": "5.6.3"
         },
         "runtime": {
@@ -1753,11 +1754,22 @@
         }
       },
       "CourseApplications.Api.Models/1.0.0": {
+        "dependencies": {
+          "CourseApplications.DAL": "1.0.0"
+        },
         "runtime": {
           "CourseApplications.Api.Models.dll": {}
         },
         "compile": {
           "CourseApplications.Api.Models.dll": {}
+        }
+      },
+      "CourseApplications.DAL/1.0.0": {
+        "runtime": {
+          "CourseApplications.DAL.dll": {}
+        },
+        "compile": {
+          "CourseApplications.DAL.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -4376,6 +4388,11 @@
       "sha512": ""
     },
     "CourseApplications.Api.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CourseApplications.DAL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseApplications.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApplications.Api.Models", "CourseApplications.Api.Models\CourseApplications.Api.Models.csproj", "{A6E76546-0410-4BA6-8F99-D71C72CCF43E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApplications.DAL", "CourseApplications.DAL\CourseApplications.DAL.csproj", "{C43C4049-F924-4A35-8880-8192A29130D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A6E76546-0410-4BA6-8F99-D71C72CCF43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6E76546-0410-4BA6-8F99-D71C72CCF43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6E76546-0410-4BA6-8F99-D71C72CCF43E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C43C4049-F924-4A35-8880-8192A29130D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C43C4049-F924-4A35-8880-8192A29130D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C43C4049-F924-4A35-8880-8192A29130D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C43C4049-F924-4A35-8880-8192A29130D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

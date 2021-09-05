@@ -2215,6 +2215,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "CourseApplications.Api.Models": "1.0.0",
+          "CourseApplications.DAL": "1.0.0",
           "Swashbuckle.AspNetCore": "5.6.3"
         },
         "compile": {
@@ -2230,11 +2231,24 @@
       "CourseApplications.Api.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "CourseApplications.DAL": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/CourseApplications.Api.Models.dll": {}
         },
         "runtime": {
           "bin/placeholder/CourseApplications.Api.Models.dll": {}
+        }
+      },
+      "CourseApplications.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/CourseApplications.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CourseApplications.DAL.dll": {}
         }
       }
     }
@@ -7096,6 +7110,11 @@
       "type": "project",
       "path": "../CourseApplications.Api.Models/CourseApplications.Api.Models.csproj",
       "msbuildProject": "../CourseApplications.Api.Models/CourseApplications.Api.Models.csproj"
+    },
+    "CourseApplications.DAL/1.0.0": {
+      "type": "project",
+      "path": "../CourseApplications.DAL/CourseApplications.DAL.csproj",
+      "msbuildProject": "../CourseApplications.DAL/CourseApplications.DAL.csproj"
     }
   },
   "projectFileDependencyGroups": {

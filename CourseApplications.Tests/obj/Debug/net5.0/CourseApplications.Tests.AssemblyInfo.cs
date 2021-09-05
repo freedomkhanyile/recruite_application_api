@@ -15,6 +15,7 @@ using System.Reflection;
 [assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CourseApplications.Api.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=n" +
     "ull", "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api." +
     "Models", "CourseApplications.Api.Models.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("CourseApplications.DAL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.DAL", "CourseApplications.DAL.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CourseApplications.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

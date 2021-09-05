@@ -11,7 +11,7 @@ namespace CourseApplications.Api.Controllers
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
         // Controller mocked data

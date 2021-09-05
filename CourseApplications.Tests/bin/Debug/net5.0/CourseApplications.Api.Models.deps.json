@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v5.0": {
       "CourseApplications.Api.Models/1.0.0": {
+        "dependencies": {
+          "CourseApplications.DAL": "1.0.0"
+        },
         "runtime": {
           "CourseApplications.Api.Models.dll": {}
+        }
+      },
+      "CourseApplications.DAL/1.0.0": {
+        "runtime": {
+          "CourseApplications.DAL.dll": {}
         }
       }
     }
   },
   "libraries": {
     "CourseApplications.Api.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CourseApplications.DAL/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

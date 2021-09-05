@@ -1,15 +1,19 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CourseApplications.Api
@@ -28,6 +32,15 @@ namespace CourseApplications.Api
         {
 
             services.AddControllers();
+
+            // Asuming that this service will be deployed in a cluster such as Kubernetes clusters
+            // We add the health check so that a polling can be done against our Api and ensures that the 
+            // Api is up and is able to self heal if its not available or stale.
+            services.AddHealthChecks();
+
+            // Swagger Documentation for external developers who will be usinng our Api service 
+            // This can be new recruiting websites.
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v0.0.1", new OpenApiInfo { Title = "CourseApplications.Api", Version = "v0.0.1" });
@@ -50,10 +63,24 @@ namespace CourseApplications.Api
 
             app.UseAuthorization();
 
+            app.UseHealthChecks("/health", new HealthCheckOptions { ResponseWriter = JsonResponseWriter });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
         }
+
+        // Instead of the default text/plain response of Healthy,
+        // we send an application/json response of {"status":"Healthy"}
+
+        private async Task JsonResponseWriter(HttpContext httpContext, HealthReport report)
+        {
+            httpContext.Response.ContentType = "application/json";
+            await JsonSerializer.SerializeAsync(httpContext.Response.Body, new { Status = report.Status.ToString() },
+                new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+        }
+
+
     }
 }

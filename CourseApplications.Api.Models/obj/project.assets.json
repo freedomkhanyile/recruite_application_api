@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "CourseApplications.DAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/CourseApplications.DAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CourseApplications.DAL.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CourseApplications.DAL/1.0.0": {
+      "type": "project",
+      "path": "../CourseApplications.DAL/CourseApplications.DAL.csproj",
+      "msbuildProject": "../CourseApplications.DAL/CourseApplications.DAL.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "CourseApplications.DAL >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Freedom.Khanyile\\.nuget\\packages\\": {},
@@ -39,7 +58,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.DAL\\CourseApplications.DAL.csproj": {
+              "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.DAL\\CourseApplications.DAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

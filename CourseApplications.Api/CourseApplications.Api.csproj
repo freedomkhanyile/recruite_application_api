@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CourseApplications.Api.Models\CourseApplications.Api.Models.csproj" />
+    <ProjectReference Include="..\CourseApplications.DAL\CourseApplications.DAL.csproj" />
   </ItemGroup>
 
 </Project>

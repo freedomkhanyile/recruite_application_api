@@ -29,7 +29,7 @@ namespace CourseApplications.Tests
             var client = _factory.CreateClient();
 
             // Act
-            var response = await client.GetAsync("/Auth/users");
+            var response = await client.GetAsync("/api/Auth/users");
 
             // Assert
             response.EnsureSuccessStatusCode();
