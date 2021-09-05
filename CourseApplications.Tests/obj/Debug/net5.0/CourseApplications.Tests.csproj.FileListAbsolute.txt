@@ -99,7 +99,9 @@ C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tes
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.Models.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.pdb
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.Models.pdb
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\obj\Debug\net5.0\CourseApplications.Tests.csprojAssemblyReference.cache
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\obj\Debug\net5.0\CourseApplications.Tests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\obj\Debug\net5.0\CourseApplications.Tests.AssemblyInfoInputs.cache

@@ -11,6 +11,9 @@ C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api\bin\Debug\net5.0\CourseApplications.Api.Models.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api\bin\Debug\net5.0\CourseApplications.Api.Models.pdb
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api\obj\Debug\net5.0\CourseApplications.Api.csprojAssemblyReference.cache
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api\obj\Debug\net5.0\CourseApplications.Api.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api\obj\Debug\net5.0\CourseApplications.Api.AssemblyInfoInputs.cache
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Api\obj\Debug\net5.0\CourseApplications.Api.AssemblyInfo.cs

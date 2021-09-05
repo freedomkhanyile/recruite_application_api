@@ -75,6 +75,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "CourseApplications.Api.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/CourseApplications.Api.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CourseApplications.Api.Models.dll": {}
+        }
       }
     }
   },
@@ -185,10 +195,16 @@
         "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "CourseApplications.Api.Models/1.0.0": {
+      "type": "project",
+      "path": "../CourseApplications.Api.Models/CourseApplications.Api.Models.csproj",
+      "msbuildProject": "../CourseApplications.Api.Models/CourseApplications.Api.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "CourseApplications.Api.Models >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -224,7 +240,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Models\\CourseApplications.Api.Models.csproj": {
+              "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Models\\CourseApplications.Api.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
