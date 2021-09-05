@@ -1,7 +1,9 @@
 ﻿using CourseApplications.Api.Models.Applications;
+using CourseApplications.DAL.Context;
 using CourseApplications.DAL.Enteties;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -15,36 +17,35 @@ namespace CourseApplications.Api.Controllers
     public class ApplicationsController : ControllerBase
     {
         private readonly ILogger<ApplicationsController> _logger;
-
-        public ApplicationsController(ILogger<ApplicationsController> logger)
+        private readonly CourseApplicationDbContext _dbContext;
+        public ApplicationsController(ILogger<ApplicationsController> logger, CourseApplicationDbContext dbContext)
         {
             _logger = logger;
+            _dbContext = dbContext;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<ApplicationModel>>> Get()
         {
-            var applicationObj = new Application
-            {
-                ApplicationId = 1,
-                FullName = "Tim Carey",
-                Address = "Tom baker street",
-                Gender = "Male",
-                Email = "tim@hotmail.com",
-                PhoneNumber = "074421215",
-                HighestGradePassed = "Grade 11",
-                DateOfBirth = "2001 July 30",
-                ApplicationDate = DateTime.Now,
-                Status = "Pending",
-                Course = new Course
-                {
-                    CourseId = 1,
-                    Name = "Information Technology",
-                    Faculty = "Science and Mathamatics",
-                    Department = "Account and Informatics",
-                    Term = "Y1-S1",
-                }
-            };
+            var applications = await _dbContext.Applications.ToArrayAsync();
+            return Ok(applications.Select(a => a.ToApiModel()));
+        }
+
+        /// <summary>
+        ///  Get Application by Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Application Model</returns>
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(ApplicationModel), statusCode: StatusCodes.Status200OK)]
+        [ProducesResponseType(statusCode:StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Get(int id)
+        {
+           var applicationObj = await _dbContext.Applications.FindAsync(id);
+
+            if (applicationObj == null) return NotFound();
+
             return Ok(applicationObj.ToApiModel());
         }
     }

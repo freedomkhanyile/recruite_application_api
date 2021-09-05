@@ -1,9 +1,11 @@
+using CourseApplications.DAL.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -45,6 +47,14 @@ namespace CourseApplications.Api
             {
                 c.SwaggerDoc("v0.0.1", new OpenApiInfo { Title = "CourseApplications.Api", Version = "v0.0.1" });
             });
+
+            // In the real world we would be pointing to the Oracle Database 
+            // With secret credentials and using relavent database provider.
+            // For the design of the Api progression we will be using InMemory to seed and mock our data.
+
+            services.AddDbContext<CourseApplicationDbContext>(builder =>
+                    builder.UseInMemoryDatabase("CourseApplicationDb"),
+                    ServiceLifetime.Singleton);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
