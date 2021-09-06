@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseApplications.DAL.Enteties
+namespace CourseApplications.DAL.Entities
 {
     public class Course
     {

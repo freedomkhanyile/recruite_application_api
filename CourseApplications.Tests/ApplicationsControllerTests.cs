@@ -1,7 +1,7 @@
 ﻿using CourseApplications.Api;
 using CourseApplications.Api.Models.Applications;
 using CourseApplications.DAL.Context;
-using CourseApplications.DAL.Enteties;
+using CourseApplications.DAL.Entities;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using System;

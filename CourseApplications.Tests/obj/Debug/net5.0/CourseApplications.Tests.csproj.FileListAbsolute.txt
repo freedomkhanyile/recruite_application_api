@@ -295,6 +295,7 @@ C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tes
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\refs\System.Xml.XPath.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\refs\System.Xml.XPath.XDocument.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\refs\WindowsBase.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Testing.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.TestHost.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll
@@ -303,6 +304,11 @@ C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tes
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.TestPlatform.CoreUtilities.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Microsoft.TestPlatform.PlatformAbstractions.dll
@@ -317,6 +323,7 @@ C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tes
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\System.IO.Pipelines.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\xunit.abstractions.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\xunit.assert.dll
@@ -389,10 +396,14 @@ C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tes
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.Models.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.Security.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.DAL.dll
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Services.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.pdb
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.Models.pdb
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Api.Security.pdb
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.DAL.pdb
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\bin\Debug\net5.0\CourseApplications.Services.pdb
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\obj\Debug\net5.0\CourseApplications.Tests.csprojAssemblyReference.cache
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\obj\Debug\net5.0\CourseApplications.Tests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.Tests\obj\Debug\net5.0\CourseApplications.Tests.AssemblyInfoInputs.cache

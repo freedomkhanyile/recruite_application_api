@@ -1,5 +1,5 @@
 ﻿using CourseApplications.DAL.Context;
-using CourseApplications.DAL.Enteties;
+using CourseApplications.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;

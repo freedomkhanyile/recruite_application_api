@@ -1,6 +1,6 @@
 ﻿using CourseApplications.Api.Models.Applications;
 using CourseApplications.DAL.Context;
-using CourseApplications.DAL.Enteties;
+using CourseApplications.DAL.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

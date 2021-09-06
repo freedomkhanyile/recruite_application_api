@@ -67,6 +67,83 @@
         }
       }
     },
+    "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Security\\CourseApplications.Api.Security.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Security\\CourseApplications.Api.Security.csproj",
+        "projectName": "CourseApplications.Api.Security",
+        "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Security\\CourseApplications.Api.Security.csproj",
+        "packagesPath": "C:\\Users\\Freedom.Khanyile\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Security\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Freedom.Khanyile\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://192.168.242.52/nuget/betterlife": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.DAL\\CourseApplications.DAL.csproj": {
+                "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.DAL\\CourseApplications.DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.12.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.12.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api\\CourseApplications.Api.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -101,6 +178,9 @@
               },
               "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.DAL\\CourseApplications.DAL.csproj": {
                 "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.DAL\\CourseApplications.DAL.csproj"
+              },
+              "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Services\\CourseApplications.Services.csproj": {
+                "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Services\\CourseApplications.Services.csproj"
               }
             }
           }
@@ -115,6 +195,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[5.0.9, )"
@@ -192,6 +276,75 @@
               "version": "[5.0.9, )"
             }
           },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Services\\CourseApplications.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Services\\CourseApplications.Services.csproj",
+        "projectName": "CourseApplications.Services",
+        "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Services\\CourseApplications.Services.csproj",
+        "packagesPath": "C:\\Users\\Freedom.Khanyile\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Freedom.Khanyile\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://192.168.242.52/nuget/betterlife": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Models\\CourseApplications.Api.Models.csproj": {
+                "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Models\\CourseApplications.Api.Models.csproj"
+              },
+              "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Security\\CourseApplications.Api.Security.csproj": {
+                "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.Api.Security\\CourseApplications.Api.Security.csproj"
+              },
+              "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.DAL\\CourseApplications.DAL.csproj": {
+                "projectPath": "C:\\Users\\Freedom.Khanyile\\source\\repos\\CourseApplications\\CourseApplications.DAL\\CourseApplications.DAL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "imports": [
             "net461",
             "net462",

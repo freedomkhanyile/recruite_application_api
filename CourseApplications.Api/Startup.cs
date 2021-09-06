@@ -1,4 +1,8 @@
+using CourseApplications.Api.IoC;
+using CourseApplications.Api.Security;
 using CourseApplications.DAL.Context;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
@@ -40,6 +45,36 @@ namespace CourseApplications.Api
             // Api is up and is able to self heal if its not available or stale.
             services.AddHealthChecks();
 
+
+            // Static class to build up our required Services from the app one liner
+            // so that we have one file to update when our software system scales.
+            ContainerSetup.SetUp(services);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, (o) =>
+            {
+                o.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    IssuerSigningKey = TokenAuthOptions.Key,
+                    ValidAudience = TokenAuthOptions.Audience,
+                    ValidIssuer = TokenAuthOptions.Issuer,
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ClockSkew = TimeSpan.FromMinutes(0)
+                };
+            });
+
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy(JwtBearerDefaults.AuthenticationScheme, new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser().Build());
+            });
+
             // Swagger Documentation for external developers who will be usinng our Api service 
             // This can be new recruiting websites.
 
@@ -66,6 +101,10 @@ namespace CourseApplications.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v0.0.1/swagger.json", "CourseApplications.Api v0.0.1"));
             }
+
+            app.UseCors("CorsPolicy");
+
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
 

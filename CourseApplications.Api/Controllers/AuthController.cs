@@ -1,4 +1,5 @@
 ﻿using CourseApplications.Api.Models.Users;
+using CourseApplications.Services.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -38,16 +39,19 @@ namespace CourseApplications.Api.Controllers
         };
 
         private readonly ILogger<AuthController> _logger;
-
-        public AuthController(ILogger<AuthController> logger)
+        private readonly IAuthService _authService;
+        private readonly IUserService _userService;
+        public AuthController(ILogger<AuthController> logger, IAuthService authService, IUserService userService)
         {
             _logger = logger;
+            _authService = authService;
+            _userService = userService;
         }
 
         [HttpGet("users")]
         public IActionResult Get()
         {
-            return Ok(users.ToList());
+            return Ok(_userService.GetAll());
         }
 
         [HttpPost("authenticate")]
