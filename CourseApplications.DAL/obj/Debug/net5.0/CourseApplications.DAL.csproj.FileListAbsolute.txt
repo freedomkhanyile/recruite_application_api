@@ -9,3 +9,4 @@ C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.DAL
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.DAL\obj\Debug\net5.0\CourseApplications.DAL.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.DAL\obj\Debug\net5.0\ref\CourseApplications.DAL.dll
 C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.DAL\obj\Debug\net5.0\CourseApplications.DAL.pdb
+C:\Users\Freedom.Khanyile\source\repos\CourseApplications\CourseApplications.DAL\obj\Debug\net5.0\CourseApplications.DAL.csprojAssemblyReference.cache

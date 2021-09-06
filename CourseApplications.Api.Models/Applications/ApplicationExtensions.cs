@@ -23,8 +23,43 @@ namespace CourseApplications.Api.Models.Applications
                 Address = application.Address,
                 Status = application.Status,
                 CourseId = application.Course.CourseId,
+            };        
+        }
+
+        public static Application ToEntity(this ApplicationModel model, Course course)
+        {
+            if (course.CourseId != model.CourseId) throw new NotSupportedException();
+
+            return new Application
+            {
+                ApplicationId = model.ApplicationId,
+                FullName = model.FullName,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
+                Gender = model.Gender,
+                DateOfBirth = model.DateOfBirth,
+                HighestGradePassed = model.HighestGradePassed,
+                ApplicationDate = model.ApplicationDate,
+                Address = model.Address,
+                Status = model.Status,
+                Course = course
             };
-        
+        }
+        public static void ToUpdateEntity(this Application applicationToUpdate, ApplicationModel model, Course course)
+        {
+            if (applicationToUpdate.ApplicationId != model.ApplicationId) throw new NotSupportedException();
+
+            applicationToUpdate.FullName = model.FullName;
+            applicationToUpdate.Email = model.Email;
+            applicationToUpdate.PhoneNumber = model.PhoneNumber;
+            applicationToUpdate.Gender = model.Gender;
+            applicationToUpdate.DateOfBirth = model.DateOfBirth;
+            applicationToUpdate.HighestGradePassed = model.HighestGradePassed;
+            applicationToUpdate.ApplicationDate = model.ApplicationDate;
+            applicationToUpdate.Address = model.Address;
+            applicationToUpdate.Status = model.Status;
+            applicationToUpdate.Course = course;
+         
         }
     }
 }
