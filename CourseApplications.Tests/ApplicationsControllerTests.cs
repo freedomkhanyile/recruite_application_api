@@ -15,67 +15,89 @@ using Xunit;
 namespace CourseApplications.Tests
 {
     [Collection("Integration Tests")]
-    public class ApplicationsControllerTests
+    public class ApplicationsControllerTests : IClassFixture<ApplicationsControllerTests.DbSetup>
     {
         private readonly WebApplicationFactory<Startup> _factory;
         private Application _mockApplication;
 
+        // provides db seeding before all tests are run, and then cleans up after.
+        [Collection("Integration Tests")]
+        public class DbSetup : IDisposable
+        {
+            private CourseApplicationDbContext _dbContext;
+
+            public DbSetup(WebApplicationFactory<Startup> factory)
+            {
+                // returns a single lifetime instance of our context used by controller classes.
+
+                _dbContext = factory.Services.GetRequiredService<CourseApplicationDbContext>();
+
+                // seed database
+                var course = new Course
+                {
+                    CourseId = 1,
+                    Name = "Information Technology",
+                    Faculty = "Science and Mathamatics",
+                    Department = "Account and Informatics",
+                    Term = "Y1-S1",
+                };
+
+                _dbContext.Courses.Add(course);
+
+                var app1 = new Application
+                {
+                    ApplicationId = 1,
+                    FullName = "Tim Carey",
+                    Address = "Tom baker street",
+                    Gender = "Male",
+                    Email = "tim@hotmail.com",
+                    PhoneNumber = "074421215",
+                    HighestGradePassed = "Grade 11",
+                    DateOfBirth = "2001 July 30",
+                    ApplicationDate = DateTime.Now,
+                    Status = "Pending",
+                    Course = course
+                };
+
+                _dbContext.Applications.Add(app1);
+
+                var app2 = new Application
+                {
+                    ApplicationId = 2,
+                    FullName = "Tammy Duncins",
+                    Address = "New Road Ave",
+                    Gender = "Female",
+                    Email = "Tammy@gmail.com.com",
+                    PhoneNumber = "0741215451",
+                    HighestGradePassed = "Grade 12",
+                    DateOfBirth = "2000 September 10",
+                    ApplicationDate = DateTime.Now,
+                    Status = "Accepted",
+                    Course = course
+                };
+
+                _dbContext.Applications.Add(app2);
+
+                _dbContext.SaveChanges();
+            }
+
+            public void Dispose()
+            {
+
+                var applications = _dbContext.Applications.ToArray();
+                _dbContext.Applications.RemoveRange(applications);
+
+                var courses = _dbContext.Courses.ToArray();
+                _dbContext.Courses.RemoveRange(courses);
+
+                _dbContext.SaveChanges();
+
+            }
+        }
+
         public ApplicationsControllerTests(WebApplicationFactory<Startup> factory)
         {
             _factory = factory;
-            
-            // Used by the controller constructor.
-            var dbContext = _factory.Services.GetRequiredService<CourseApplicationDbContext>();
-
-            // Seed with required data.
-
-            var course = new Course
-            {
-                CourseId = 1,
-                Name = "Information Technology",
-                Faculty = "Science and Mathamatics",
-                Department = "Account and Informatics",
-                Term = "Y1-S1",
-            };
-
-            dbContext.Courses.Add(course);
-
-             _mockApplication = new Application
-            {
-                ApplicationId = 1,
-                FullName = "Tim Carey",
-                Address = "Tom baker street",
-                Gender = "Male",
-                Email = "tim@hotmail.com",
-                PhoneNumber = "074421215",
-                HighestGradePassed = "Grade 11",
-                DateOfBirth = "2001 July 30",
-                ApplicationDate = DateTime.Now,
-                Status = "Pending",
-                Course = course
-            };
-
-            dbContext.Applications.Add(_mockApplication);
-
-            var app2 = new Application
-            {
-                ApplicationId = 2,
-                FullName = "Tammy Duncins",
-                Address = "New Road Ave",
-                Gender = "Female",
-                Email = "Tammy@gmail.com.com",
-                PhoneNumber = "0741215451",
-                HighestGradePassed = "Grade 12",
-                DateOfBirth = "2000 September 10",
-                ApplicationDate = DateTime.Now,
-                Status = "Accepted",
-                Course = course
-            };
-
-            dbContext.Applications.Add(app2);
-
-            dbContext.SaveChanges();
-
         }
 
         [Fact]
@@ -90,14 +112,15 @@ namespace CourseApplications.Tests
             response.EnsureSuccessStatusCode();
             Assert.NotNull(response.Content);
 
-            var responseObj = JsonSerializer
-                .Deserialize<List<ApplicationModel>>(
-                await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true, });
+            var responseApplications = JsonSerializer
+                .Deserialize<IEnumerable<ApplicationModel>>(
+                await response.Content.ReadAsStringAsync(), 
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true, });
 
-            Assert.Equal(2, responseObj.Count);
-            Assert.Equal(_mockApplication.ApplicationId, responseObj[0].ApplicationId);
-            Assert.Equal(_mockApplication.Status, responseObj[0].Status);
-            Assert.Equal(_mockApplication.Course.CourseId, responseObj[0].CourseId);
+            Assert.NotNull(responseApplications);
+            Assert.Equal(2, responseApplications.Count());
+            Assert.Contains(responseApplications, app => app.ApplicationId == 1);
+            Assert.Contains(responseApplications, app => app.ApplicationId == 2);
         }
 
         [Fact]
