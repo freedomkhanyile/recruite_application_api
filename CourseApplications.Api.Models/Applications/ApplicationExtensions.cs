@@ -22,7 +22,7 @@ namespace CourseApplications.Api.Models.Applications
                 ApplicationDate = application.ApplicationDate,
                 Address = application.Address,
                 Status = application.Status,
-                CourseId = application.Course.CourseId,
+                CourseId = application.Course != null ? application.Course.CourseId : 0,
             };        
         }
 
