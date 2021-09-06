@@ -1,5 +1,7 @@
 ﻿using CourseApplications.Api.Models.Users;
+using CourseApplications.DAL;
 using CourseApplications.Services.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -48,6 +50,7 @@ namespace CourseApplications.Api.Controllers
             _userService = userService;
         }
 
+        [Authorize(Roles = RoleConstants.Admin)]
         [HttpGet("users")]
         public IActionResult Get()
         {
@@ -58,9 +61,9 @@ namespace CourseApplications.Api.Controllers
         public IActionResult Authenticate([FromBody] AuthenticateModel model)
         {
             // TODO Service must authenticate and provide a Bearer Token
-            var validUser = users
-                .ToList()
-                .FirstOrDefault(x => x.Email == model.Email);
+            if (model.Email == null) return BadRequest();
+
+            var validUser = _authService.Authenticate(model.Email);
 
             if (validUser == null)
             {
@@ -68,35 +71,24 @@ namespace CourseApplications.Api.Controllers
                 return NotFound(new { Message = "Incorrect Username/Password, Try Again" });
             }
 
-            _logger.LogInformation($"User authenticated successfully for : {validUser.Email}");
+            _logger.LogInformation($"User authenticated successfully for : {validUser.User.Email}");
 
             if (validUser != null && model.IsInternal)
             {
                 var _message = "Welcome Staff member";
-                if (validUser.Role == "Admin")
+                if (validUser.User.Role == "Admin")
                     _message = "Welcome Administrator";
                 return Ok(new
                 {
                     Message = _message,
-                    loggedInUser = new
-                    {
-                        validUser.Email,
-                        validUser.FullName,
-                        validUser.Role,
-                        Token = Guid.NewGuid(),
-                    },
+                    validUser
                 });
             }
+
             return Ok(new
             {
                 Message = "Welcome Recruiter",
-                loggedInUser = new
-                {
-                    validUser.Email,
-                    validUser.FullName,
-                    validUser.Role,
-                    Token = Guid.NewGuid(),
-                },
+                validUser
             });
         }
 

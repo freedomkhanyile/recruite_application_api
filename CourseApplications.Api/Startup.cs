@@ -49,10 +49,12 @@ namespace CourseApplications.Api
             // Static class to build up our required Services from the app one liner
             // so that we have one file to update when our software system scales.
             ContainerSetup.SetUp(services);
+
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
             }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, (o) =>
             {
                 o.TokenValidationParameters = new TokenValidationParameters()
@@ -78,9 +80,34 @@ namespace CourseApplications.Api
             // Swagger Documentation for external developers who will be usinng our Api service 
             // This can be new recruiting websites.
 
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(sw =>
             {
-                c.SwaggerDoc("v0.0.1", new OpenApiInfo { Title = "CourseApplications.Api", Version = "v0.0.1" });
+                sw.SwaggerDoc("v0.0.1", new OpenApiInfo { Title = "Course Applications Api", Version = "v0.0.1" });
+                sw.OperationFilter<CustomHeaderSwaggerAttribute>();
+                sw.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Description = "JWT Authorization header using the Bearer scheme.",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                });
+
+                sw.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
             });
 
             // In the real world we would be pointing to the Oracle Database 
