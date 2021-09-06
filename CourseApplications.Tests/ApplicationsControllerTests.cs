@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -114,7 +116,7 @@ namespace CourseApplications.Tests
 
             var responseApplications = JsonSerializer
                 .Deserialize<IEnumerable<ApplicationModel>>(
-                await response.Content.ReadAsStringAsync(), 
+                await response.Content.ReadAsStringAsync(),
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true, });
 
             Assert.NotNull(responseApplications);
@@ -130,7 +132,7 @@ namespace CourseApplications.Tests
             var client = _factory.CreateClient();
 
             // Act
-            var response = await client.GetAsync("/api/Applications/1");
+            var response = await client.GetAsync("/api/applications/1");
 
             // Assert
             response.EnsureSuccessStatusCode();
@@ -140,9 +142,160 @@ namespace CourseApplications.Tests
                 .Deserialize<ApplicationModel>(
                 await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true, });
 
-            Assert.Equal(_mockApplication.ApplicationId, responseObj.ApplicationId);
-            Assert.Equal(_mockApplication.Status, responseObj.Status);
-            Assert.Equal(_mockApplication.Course.CourseId, responseObj.CourseId);
+            Assert.Equal(1, responseObj.ApplicationId);
+            Assert.Equal("Pending", responseObj.Status);
+            Assert.Equal(1, responseObj.CourseId);
+        }
+
+        [Fact]
+        public async Task GetById_ShouldReturnNotFound_InvalidApplicationId()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+
+            // Act 
+            var response = await client.GetAsync("/api/applications/123");
+
+            // Assert
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task CreateApplication_ShouldReturn_Success()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+
+            var applicationModel = new ApplicationModel
+            {
+                ApplicationId = 3,
+                FullName = "Peter Parker",
+                Address = "5th Aven",
+                Gender = "Male",
+                Email = "peterp@gmail.com.com",
+                PhoneNumber = "07451215487",
+                HighestGradePassed = "Grade 12",
+                DateOfBirth = "1999 September 10",
+                ApplicationDate = DateTime.Now,
+                Status = "Pending",
+                CourseId = 1
+            };
+
+            // serialize our request
+            var content = new StringContent(JsonSerializer.Serialize(applicationModel,
+                 new JsonSerializerOptions { IgnoreNullValues = true }), Encoding.UTF8, "application/json");
+
+            try
+            {
+                // Act 
+                var response = await client.PostAsync("/api/applications", content);
+
+                // Assert
+                response.EnsureSuccessStatusCode();
+                Assert.NotNull(response.Content);
+
+                var responseObj = JsonSerializer
+                .Deserialize<ApplicationModel>(
+                await response.Content.ReadAsStringAsync(),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true, });
+
+                Assert.NotNull(responseObj);
+                Assert.Equal(applicationModel.ApplicationId, responseObj.ApplicationId);
+                Assert.Equal(applicationModel.FullName, responseObj.FullName);
+                Assert.Equal(applicationModel.Email, responseObj.Email);
+
+            }
+            finally
+            {
+                // clean up
+                var dbContext = _factory.Services.GetRequiredService<CourseApplicationDbContext>();
+                var applicationEntity = await dbContext.Applications.FindAsync(applicationModel.ApplicationId);
+                dbContext.Applications.Remove(applicationEntity);
+                await dbContext.SaveChangesAsync();
+            }
+
+        }
+
+        [Fact]
+        public async Task Update_ShoulReturnSuccess_ApplicationUpdate()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+            var applicationToUpdate = new ApplicationModel
+            {
+                ApplicationId = 2,
+                FullName = "Tammy Duncins",
+                Address = "New Road Ave",
+                Gender = "Female",
+                Email = "Tammy@gmail.com.com",
+                PhoneNumber = "0741215451",
+                HighestGradePassed = "Grade 12",
+                DateOfBirth = "2000 September 10",
+                ApplicationDate = DateTime.Now,
+                Status = "Rejected"
+            };
+
+            // serialize our request
+            var content = new StringContent(JsonSerializer.Serialize(applicationToUpdate,
+                 new JsonSerializerOptions { IgnoreNullValues = true }), Encoding.UTF8, "application/json");
+
+            // Act
+            var response = await client.PutAsync("/api/applications/2", content);
+
+            // Assert
+            Assert.Equal(HttpStatusCode.NoContent, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task Delete_ShouldReturnSuccessAndDeletedApplication()
+        {
+            // Arrange
+            var client = _factory.CreateClient();
+            var dbContext = _factory.Services.GetRequiredService<CourseApplicationDbContext>();
+            var courseEntity = new Course
+            {
+                CourseId = 2,
+                Name = "Information Technology",
+                Faculty = "Science and Mathamatics",
+                Department = "Account and Informatics",
+                Term = "Y1-S1",
+            };
+
+            dbContext.Courses.Add(courseEntity);
+
+            var applicationEntity = new Application
+            {
+                ApplicationId = 3,
+                FullName = "Tammy Duncins",
+                Address = "New Road Ave",
+                Gender = "Female",
+                Email = "Tammy@gmail.com.com",
+                PhoneNumber = "0741215451",
+                HighestGradePassed = "Grade 12",
+                DateOfBirth = "2000 September 10",
+                ApplicationDate = DateTime.Now,
+                Status = "Pending",
+                Course = courseEntity
+            };
+
+            dbContext.Applications.Add(applicationEntity);
+            await dbContext.SaveChangesAsync();
+
+
+            // Act
+            var response = await client.DeleteAsync("/api/applications/3");
+
+            // Assert
+            response.EnsureSuccessStatusCode();
+            Assert.NotNull(response.Content);
+
+            var responseObj = JsonSerializer
+               .Deserialize<ApplicationModel>(
+               await response.Content.ReadAsStringAsync(), new JsonSerializerOptions { PropertyNameCaseInsensitive = true, });
+
+            Assert.NotNull(responseObj);
+
+            Assert.Equal(applicationEntity.ApplicationId, responseObj.ApplicationId);
         }
     }
 }

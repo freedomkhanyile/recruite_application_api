@@ -115,7 +115,7 @@ namespace CourseApplications.Api.Controllers
 
             // get the course if we have a new update,
             // else return course from db on initial create.
-            var _course = model.CourseId != applicationEntity.Course.CourseId
+            var _course = model.CourseId == applicationEntity.Course.CourseId
                 ? await _dbContext.Courses.FindAsync(model.CourseId) : applicationEntity.Course;
 
             if(_course == null)
